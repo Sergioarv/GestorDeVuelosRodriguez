@@ -21,11 +21,11 @@ export class RutasComponent implements OnInit {
     this.getRutas();
   }
 
-  getRutas(){
+  getRutas(): void {
     this.rutaService.getRutas().subscribe(resp => {
       console.log(resp);
       this.rutasList = resp;
-    })
+    });
   }
 
 }

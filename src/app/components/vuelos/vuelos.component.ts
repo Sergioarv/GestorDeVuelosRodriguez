@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VuelosComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // Construtor de Vuelos
+  }
 
   ngOnInit(): void {
+    // ngOnit
   }
 
 }

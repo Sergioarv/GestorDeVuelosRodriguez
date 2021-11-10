@@ -1,7 +1,7 @@
-import { Ciudad } from "./ciudad";
+import { Ciudad } from './ciudad';
 
 export class Ruta {
-    idRuta: string = '';
-    origen: Ciudad = new Ciudad;
-    destino: Ciudad = new Ciudad;
+    idRuta = '';
+    origen!: Ciudad;
+    destino!: Ciudad;
 }
