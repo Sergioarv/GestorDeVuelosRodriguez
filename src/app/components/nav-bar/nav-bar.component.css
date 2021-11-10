@@ -1,4 +1,15 @@
-.far,
-.fa-paper-plane  {
+.far, .fa-paper-plane {
     color: #ff6600;
+}
+
+.logo {
+    color: #0064be;
+}
+ 
+.active {
+    background-color:#0064be;
+}
+
+.active button {
+    color: whitesmoke;
 }
