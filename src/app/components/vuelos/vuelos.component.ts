@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Vuelo } from 'src/app/model/vuelo';
+import { VuelosService } from 'src/app/service/vuelos.service';
+
 
 @Component({
   selector: 'app-vuelos',
@@ -7,12 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VuelosComponent implements OnInit {
 
-  constructor() {
+  vuelosList: Vuelo[];
+  public displayDialogEdit = true;
+
+  constructor(
+    private vueloService: VuelosService,
+    private route: Router,
+  ) {
     // Construtor de Vuelos
+    this.vuelosList = [];
   }
 
   ngOnInit(): void {
     // ngOnit
+    this.getVuelos();
+  }
+
+  getVuelos(): void {
+    this.vueloService.getVuelos().subscribe( resp => {
+      this.vuelosList = resp;
+    });
+  }
+
+  openEditForm(vuelo: Vuelo): void {
+    localStorage.setItem("id", vuelo.idVuelo);
+    this.route.navigate(['vuelos/edit'])
   }
 
 }

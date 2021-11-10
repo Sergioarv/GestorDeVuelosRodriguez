@@ -1,0 +1,40 @@
+<div class="container" style="margin: 15px;margin-left: 10%">
+    <div class="card">
+        <div class="card-header">
+            <h5>Editar un vuelo</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col-4" [hidden]="true">
+                        <label class="form-label">Id:</label>
+                        <input type="text" class="form-control" value="{{vueloEdit.idVuelo}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-label">Fecha:</label>
+                        <input type="text" class="form-control"
+                            value="{{ vueloEdit.fecha_vuelo | date : 'YYYY-MM-dd' }}">
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">Aerolinea</label>
+                        <input type="text" class="form-control"
+                            value="{{ vueloEdit.aerolinea_idAerolinea.nombreAerolinea }}">
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">Ruta</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-success">Guardar</button> &nbsp;
+                        <button type="button" class="btn btn-danger" [routerLink]="['/vuelos']">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

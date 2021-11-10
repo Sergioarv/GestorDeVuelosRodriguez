@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RutasService } from './service/rutas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { EditComponent } from './components/vuelos/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { HomeComponent } from './components/home/home.component';
     NavBarComponent,
     VuelosComponent,
     RutasComponent,
-    HomeComponent
+    HomeComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [RutasService],
   bootstrap: [AppComponent]

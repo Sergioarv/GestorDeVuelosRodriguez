@@ -1,1 +1,35 @@
-<p>vuelos works!</p>
+<div class="container" style="margin: 15px; margin-left: 10%">
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-primary">Crear</button>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Lista de rutas</h5>
+            <table class="table-light table table-hover table-bordered">
+                <caption>Lista de rutas</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Fecha del Vuelo</th>
+                        <th scope="col">Aerolinea</th>
+                        <th scope="col">Ruta (origen - Destino)</th>
+                        <th scope="col" style="width: 250px; max-width: max-content;">Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vuelo of vuelosList">
+                        <td>{{ vuelo.idVuelo}}</td>
+                        <td>{{ vuelo.fecha_vuelo | date : "yyyy-MM-dd" }}</td>
+                        <td>{{ vuelo.aerolinea_idAerolinea.nombreAerolinea }}</td>
+                        <td>{{ vuelo.ruta_idRuta.origen.nombreCiudad }} - {{ vuelo.ruta_idRuta.destino.nombreCiudad}}
+                        </td>
+                        <td>
+                            <button class="btn btn-info" (click)="openEditForm(vuelo)"><em class="far fa-edit"></em>
+                                Editar</button>&nbsp; &nbsp;
+                            <button class="btn btn-danger"><em class="far fa-trash-alt"></em> Eliminar</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
