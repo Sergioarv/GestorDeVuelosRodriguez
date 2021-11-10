@@ -1,0 +1,19 @@
+<div class="container" style="margin: 15px;margin-left: 5%; margin-right: 5%;">
+    <h5 class="card-title">Lista de rutas</h5>
+    <table class="table-light table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Origen</th>
+                <th>Destino</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ruta of rutasList">
+                <td>{{ ruta.idRuta}}</td>
+                <td>{{ ruta.origen.nombreCiudad}}</td>
+                <td>{{ ruta.destino.nombreCiudad}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
