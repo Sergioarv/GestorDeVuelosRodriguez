@@ -25,9 +25,8 @@ import { EditComponent } from './components/vuelos/edit/edit.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
   ],
-  providers: [RutasService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
