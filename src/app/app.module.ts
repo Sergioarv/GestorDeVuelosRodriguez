@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RutasService } from './service/rutas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { EditComponent } from './components/vuelos/edit/edit.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { EditComponent } from './components/vuelos/edit/edit.component';
     VuelosComponent,
     RutasComponent,
     HomeComponent,
-    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +25,9 @@ import { EditComponent } from './components/vuelos/edit/edit.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
