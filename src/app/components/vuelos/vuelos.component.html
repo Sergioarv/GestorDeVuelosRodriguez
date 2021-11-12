@@ -1,7 +1,7 @@
 <div class="container" style="margin: 15px; margin-left: 10%">
     <div class="card">
         <div class="card-header">
-            <button class="btn btn-primary">Crear</button>
+            <button class="btn btn-primary" (click)="openCreateForm()">Crear</button>
         </div>
         <div class="card-body">
             <h5 class="card-title">Lista de rutas</h5>
@@ -24,58 +24,12 @@
                         <td>{{ vuelo.ruta_idRuta.origen.nombreCiudad }} - {{ vuelo.ruta_idRuta.destino.nombreCiudad}}
                         </td>
                         <td>
-                            <button class="btn btn-info" data-toggle="modal" (click)="openEditForm(vuelo)"
-                                data-target="#exampleModal">
-                                <em class="far fa-edit"></em>
+                            <button class="btn btn-info" (click)="openEditForm(vuelo)"><em class="far fa-edit"></em>
                                 Editar</button>&nbsp; &nbsp;
                             <button class="btn btn-danger"><em class="far fa-trash-alt"></em> Eliminar</button>
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Editar -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    *ngIf="vueloEdit != null">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar un vuelo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form [formGroup]="editForm">
-                    <div class="row">
-                        <div class="col-4" [hidden]="true">
-                            <label class="form-label">Id:</label>
-                            <input type="text" class="form-control" formControlName="id">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <label class="form-label">Fecha:</label>
-                            <input type="text" class="form-control" formControlName="fecha">
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label">Aerolinea</label>
-                            <input type="text" class="form-control" formControlName="aerolinea">
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label">Ruta</label>
-                            <input type="text" class="form-control" formControlName="ruta">
-                        </div>
-                    </div>
-                    <br>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="guardar()">Guardar Cambioss</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            </div>
         </div>
     </div>
 </div>

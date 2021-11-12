@@ -1,0 +1,43 @@
+<div class="container" style="margin: 15px; margin-left: 10%">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-group" [formGroup]="editForm">
+                <div class="row">
+                    <div class="col-3" hidden=true>
+                        <label>Id:</label>
+                        <input type="text" class="form-control" value="{{ vueloEdit.idVuelo }}">
+                    </div>
+                    <div class="col-4">
+                        <label>Fecha de Vuelo:</label>
+                        <input type="text" class="form-control"
+                            value="{{ vueloEdit.fecha_vuelo | date: 'yyyy-MM-dd' }}">
+                    </div>
+                    <div class="col-4">
+                        <label>Aerolinea:</label>
+                        <select class="form-control" formControlName="aerolinea">
+                            <option selected>Seleccione una aerolina</option>
+                            <option *ngFor="let aero of aerolineaList" value="{{aero.id_aerolinea}}">
+                                {{ aero.nombreAerolinea }}</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label>Ruta:</label>
+                        <select class="form-control" formControlName="ruta">
+                            <option selected>Seleccione una aerolina</option>
+                            <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
+                                De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" (click)="guardar()">Guardar Cambios</button>
+            &nbsp;
+            <button class="btn btn-danger" [routerLink]="['/vuelos']">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Notificación -->

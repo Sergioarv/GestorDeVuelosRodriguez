@@ -14,12 +14,17 @@ export class VuelosService {
   ) { }
 
   getVuelos(): Observable<any> {
-    const URL = GlobalConstant.URL_RUTA_ENDPOINT + VueloConstant.URL_VUELOS;
+    const URL = GlobalConstant.URL_ENDPOINT + VueloConstant.URL_VUELOS;
     return this.http.get<any>(URL);
   }
 
   getVueloById(idVuelo: any): Observable<any> {
-    const URL = GlobalConstant.URL_RUTA_ENDPOINT + VueloConstant.URL_VUELOS;
+    const URL = GlobalConstant.URL_ENDPOINT + VueloConstant.URL_VUELOS;
     return this.http.get<any>(URL + '/' + idVuelo);
+  }
+
+  updateVuelo(vuelo: any): Observable<any> {
+    const URL = GlobalConstant.URL_ENDPOINT + VueloConstant.URL_VUELOS;
+    return this.http.put<any>(URL, vuelo);
   }
 }

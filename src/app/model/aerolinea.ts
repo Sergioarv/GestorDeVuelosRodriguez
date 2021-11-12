@@ -1,4 +1,4 @@
 export class Aerolinea {
-    idAerolinea = '';
+    id_aerolinea = '';
     nombreAerolinea = '';
 }

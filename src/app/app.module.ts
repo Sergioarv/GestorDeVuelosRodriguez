@@ -10,6 +10,8 @@ import { RutasService } from './service/rutas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditComponent } from './components/vuelos/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { DatePipe } from '@angular/common';
     VuelosComponent,
     RutasComponent,
     HomeComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     DatePipe

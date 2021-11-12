@@ -1,4 +1,4 @@
 export class GlobalConstant {
 
-    public static URL_RUTA_ENDPOINT = 'http://localhost:8080';
+    public static URL_ENDPOINT = 'http://localhost:8080';
 }
