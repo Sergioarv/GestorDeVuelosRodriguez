@@ -47,17 +47,17 @@ export class EditComponent implements OnInit {
   getAerolinea(): void {
     this.aerolineaService.getAerolineas().subscribe(resp => {
       this.aerolineaList = resp;
-    })
+    });
   }
 
   getRuta(): void {
     this.rutaService.getRutas().subscribe(resp => {
       this.rutaList = resp;
-    })
+    });
   }
 
   getVueloEdit(): void {
-    let id = localStorage.getItem('vueloEdit');
+    const id = localStorage.getItem('vueloEdit');
     this.vuelosService.getVueloById(id).subscribe(resp => {
       this.vueloEdit = resp;
       this.editForm.get('aerolinea')?.setValue(this.vueloEdit.aerolinea_idAerolinea.id_aerolinea);
@@ -69,7 +69,7 @@ export class EditComponent implements OnInit {
     this.vueloEdit.aerolinea_idAerolinea.id_aerolinea = this.editForm.controls['aerolinea'].value;
     this.vueloEdit.ruta_idRuta.idRuta = this.editForm.controls['ruta'].value;
     this.vuelosService.updateVuelo(this.vueloEdit).subscribe(resp => {
-      //this.route.navigate(['/vuelos']);
+    this.route.navigate(['/vuelos']);
     },
       error => {
 //

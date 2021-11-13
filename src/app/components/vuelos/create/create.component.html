@@ -1,22 +1,23 @@
 <div class="container" style="margin: 15px; margin-left: 10%">
     <div class="card">
-        <div class="card-header"><h5>Editar vuelo</h5></div>
+        <div class="card-header">
+            <h5 class="card-title">Crear vuelo</h5>
+        </div>
         <div class="card-body">
-            <form class="form-group" [formGroup]="editForm">
+            <form class="form-group" [formGroup]="createForm">
                 <div class="row">
                     <div class="col-3" hidden=true>
                         <label>Id:</label>
-                        <input type="text" class="form-control" value="{{ vueloEdit.idVuelo }}">
+                        <input type="text" class="form-control">
                     </div>
                     <div class="col-4">
                         <label>Fecha de Vuelo:</label>
-                        <input type="text" class="form-control"
-                            value="{{ vueloEdit.fecha_vuelo | date: 'yyyy-MM-dd' }}">
+                        <input type="text" class="form-control" formControlName="fecha">
                     </div>
                     <div class="col-4">
                         <label>Aerolinea:</label>
                         <select class="form-control" formControlName="aerolinea">
-                            <option selected>Seleccione una aerolina</option>
+                            <option value="Seleccione una aerolina">Seleccione una aerolina</option>
                             <option *ngFor="let aero of aerolineaList" value="{{aero.id_aerolinea}}">
                                 {{ aero.nombreAerolinea }}</option>
                         </select>
@@ -24,7 +25,7 @@
                     <div class="col-4">
                         <label>Ruta:</label>
                         <select class="form-control" formControlName="ruta">
-                            <option selected>Seleccione una ruta</option>
+                            <option value="Seleccione una ruta" selected>Seleccione una ruta</option>
                             <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
                                 De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
                             </option>
@@ -44,5 +45,3 @@
         </div>
     </div>
 </div>
-
-<!-- Notificación -->

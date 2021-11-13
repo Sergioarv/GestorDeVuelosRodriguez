@@ -1,13 +1,19 @@
 <div class="container" style="margin: 15px; margin-left: 10%">
     <div class="card">
         <div class="card-header">
-            <button class="btn btn-primary" (click)="openCreateForm()">Crear</button>
+            <div class="row">
+                <div class="col-4">
+                    <h5 class="card-title">Lista de vuelos</h5>
+                </div>
+                <div class="col-8">
+                    <button class="btn btn-primary" routerLink='/vuelos/create' style="float: right; width: 10rem;">Crear</button>
+                </div>
+            </div>
         </div>
         <div class="card-body">
-            <h5 class="card-title">Lista de rutas</h5>
-            <table class="table table-hover table-bordered">
+            <table class="table table-bordered table-hover">
                 <caption>Lista de rutas</caption>
-                <thead class="thead-dark">
+                <thead class="thead-col">
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Fecha del Vuelo</th>

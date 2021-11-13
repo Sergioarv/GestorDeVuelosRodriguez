@@ -37,9 +37,4 @@ export class VuelosComponent implements OnInit {
     this.route.navigate(['/vuelos/edit']);
   }
 
-  openCreateForm(): void {
-    // d
-  }
-
-
 }

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditComponent } from './components/vuelos/edit/edit.component';
+import { CreateVuelosComponent } from './components/vuelos/create/create.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EditComponent } from './components/vuelos/edit/edit.component';
     RutasComponent,
     HomeComponent,
     EditComponent,
+    CreateVuelosComponent,
   ],
   imports: [
     BrowserModule,
