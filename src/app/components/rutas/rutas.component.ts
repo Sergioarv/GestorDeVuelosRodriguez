@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RutasService } from 'src/app/service/rutas.service';
 import { Ruta } from '../../model/ruta';
 
@@ -13,12 +14,18 @@ export class RutasComponent implements OnInit {
 
   constructor(
     private rutaService: RutasService,
+    private route: Router,
   ) {
     this.rutasList = [];
    }
 
   ngOnInit(): void {
     this.getRutas();
+  }
+
+  selectRow(ruta: Ruta): void {
+    localStorage.setItem('rutaSelect', ruta.idRuta);
+    this.route.navigate(['/vuelos']);
   }
 
   getRutas(): void {

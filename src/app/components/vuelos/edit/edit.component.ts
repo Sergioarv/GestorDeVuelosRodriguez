@@ -20,10 +20,12 @@ export class EditComponent implements OnInit {
   aerolineaList: Aerolinea[];
   rutaList: Ruta[];
   isAlert = true;
+  dateNow!: Date;
 
   editForm = new FormGroup({
     aerolinea: new FormControl(),
-    ruta: new FormControl()
+    ruta: new FormControl(),
+    fecha: new FormControl()
   });
 
   constructor(
@@ -36,6 +38,7 @@ export class EditComponent implements OnInit {
     this.aerolineaList = [];
     this.rutaList = [];
     this.vueloEdit = new Vuelo;
+    this.dateNow = new Date();
   }
 
   ngOnInit(): void {
@@ -60,20 +63,23 @@ export class EditComponent implements OnInit {
     const id = localStorage.getItem('vueloEdit');
     this.vuelosService.getVueloById(id).subscribe(resp => {
       this.vueloEdit = resp;
+      this.dateNow = this.vueloEdit.fecha_vuelo;
+      this.editForm.get('fecha')?.setValue(this.dateNow);
       this.editForm.get('aerolinea')?.setValue(this.vueloEdit.aerolinea_idAerolinea.id_aerolinea);
       this.editForm.get('ruta')?.setValue(this.vueloEdit.ruta_idRuta.idRuta);
     });
   }
 
-  guardar(): void {
+  actualizar(): void {
+    const updateDate = this.editForm.controls['fecha'].value;
+    this.vueloEdit.fecha_vuelo = updateDate == null ? this.vueloEdit.fecha_vuelo : updateDate;
     this.vueloEdit.aerolinea_idAerolinea.id_aerolinea = this.editForm.controls['aerolinea'].value;
     this.vueloEdit.ruta_idRuta.idRuta = this.editForm.controls['ruta'].value;
     this.vuelosService.updateVuelo(this.vueloEdit).subscribe(resp => {
-    this.route.navigate(['/vuelos']);
+      this.route.navigate(['/vuelos']);
     },
       error => {
-//
+        //
       });
-
   }
 }

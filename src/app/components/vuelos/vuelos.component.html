@@ -1,4 +1,53 @@
+<!-- Contenedor del html Vuelos-->
 <div class="container" style="margin: 15px; margin-left: 10%">
+    <!-- Form de busqueda avanzada-->
+    <div class="card">
+        <div class="card-header">
+            <h5>Busqueda avanzada</h5>
+        </div>
+        <div class="card-body">
+            <form class="form-group" [formGroup]="filterForm">
+                <div class="row">
+                    <div class="col-4">
+                        <label>Fecha:</label>
+                        <input type="date" class="form-control" formControlName="fecha" required (change)="filter()">
+                    </div>
+                    <div class="col-4">
+                        <label>Conector:</label>
+                        <select class="form-control" formControlName="conector" required (change)="filter()">
+                            <option selected value="">Seleccione Conector</option>
+                            <option value="AND">Y</option>
+                            <option value="OR">O</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label>Ruta:</label>
+                        <select class="form-control" formControlName="ruta" required (change)="filter()">
+                            <option selected value="">Seleccione una ruta</option>
+                            <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
+                                De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="invalid feedback col-10" *ngIf="conectorInvalido">
+                        {{ mensaje }}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-primary" (click)="filter()">Buscar</button>
+                        &nbsp;
+                        <button class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <!-- Tabla del listado -->
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -6,7 +55,8 @@
                     <h5 class="card-title">Lista de vuelos</h5>
                 </div>
                 <div class="col-8">
-                    <button class="btn btn-primary" routerLink='/vuelos/create' style="float: right; width: 10rem;">Crear</button>
+                    <button class="btn btn-primary" routerLink='/vuelos/create'
+                        style="float: right; width: 10rem;">Crear</button>
                 </div>
             </div>
         </div>
@@ -25,14 +75,19 @@
                 <tbody>
                     <tr *ngFor="let vuelo of vuelosList">
                         <td>{{ vuelo.idVuelo}}</td>
-                        <td>{{ vuelo.fecha_vuelo | date : "yyyy/MM/dd" }}</td>
+                        <td>{{ vuelo.fecha_vuelo | date : "dd/MM/yyyy" }}</td>
                         <td>{{ vuelo.aerolinea_idAerolinea.nombreAerolinea }}</td>
                         <td>{{ vuelo.ruta_idRuta.origen.nombreCiudad }} - {{ vuelo.ruta_idRuta.destino.nombreCiudad}}
                         </td>
                         <td>
-                            <button class="btn btn-info" (click)="openEditForm(vuelo)"><em class="far fa-edit"></em>
+                            <button class="btn btn-edit" (click)="openEditForm(vuelo)"><em class="far fa-edit"></em>
                                 Editar</button>&nbsp; &nbsp;
-                            <button class="btn btn-danger"><em class="far fa-trash-alt"></em> Eliminar</button>
+                            <button class="btn btn-danger" (click)="deleteVuelos(vuelo)"><em class="far fa-trash-alt" ></em> Eliminar</button>
+                    </tr>
+                    <tr *ngIf="vuelosList.length == 0">
+                        <td colspan="5">
+                            <p style="text-align: center; font-size: x-large; color: red;">No hay vuelos a listar</p>
+                        </td>
                     </tr>
                 </tbody>
             </table>

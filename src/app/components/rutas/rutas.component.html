@@ -12,10 +12,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ruta of rutasList">
+                    <tr *ngFor="let ruta of rutasList" (click)="selectRow(ruta)">
                         <td>{{ ruta.idRuta}}</td>
                         <td>{{ ruta.origen.nombreCiudad}}</td>
                         <td>{{ ruta.destino.nombreCiudad}}</td>
+                    </tr>
+                    <tr *ngIf="rutasList.length == 0">
+                        <td colspan="5">
+                            <p style="text-align: center; font-size: x-large; color: red;">No hay vuelos a listar</p>
+                        </td>
                     </tr>
                 </tbody>
             </table>

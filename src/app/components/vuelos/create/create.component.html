@@ -12,20 +12,21 @@
                     </div>
                     <div class="col-4">
                         <label>Fecha de Vuelo:</label>
-                        <input type="text" class="form-control" formControlName="fecha">
+                        <input type="date" class="form-control" formControlName="fecha"
+                            value="{{ dateNow | date: 'yyyy-MM-dd' }}" required>
                     </div>
                     <div class="col-4">
                         <label>Aerolinea:</label>
-                        <select class="form-control" formControlName="aerolinea">
-                            <option value="Seleccione una aerolina">Seleccione una aerolina</option>
+                        <select class="form-control" formControlName="aerolinea" required>
+                            <option selected disabled value="">Seleccione una aerolina</option>
                             <option *ngFor="let aero of aerolineaList" value="{{aero.id_aerolinea}}">
                                 {{ aero.nombreAerolinea }}</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <label>Ruta:</label>
-                        <select class="form-control" formControlName="ruta">
-                            <option value="Seleccione una ruta" selected>Seleccione una ruta</option>
+                        <select class="form-control" formControlName="ruta" required>
+                            <option selected disabled value="">Seleccione una ruta</option>
                             <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
                                 De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
                             </option>
@@ -37,7 +38,9 @@
         <div class="card-footer">
             <div class="row" style="float: right;">
                 <div class="col-12">
-                    <button class="btn btn-success" (click)="guardar()">Guardar Cambios</button>
+                    <button class="btn btn-success" (click)="guardar()"
+                        [disabled]="createForm.invalid">
+                        Guardar</button>
                     &nbsp;
                     <button class="btn btn-danger" routerLink='/vuelos'>Cancelar</button>
                 </div>
