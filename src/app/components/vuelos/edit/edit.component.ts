@@ -9,6 +9,7 @@ import { RutasService } from 'src/app/service/rutas.service';
 import { Ruta } from 'src/app/model/ruta';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit',
@@ -35,7 +36,8 @@ export class EditComponent implements OnInit {
     private rutaService: RutasService,
     private dateFormat: DatePipe,
     private route: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private translate: TranslateService
   ) {
     this.aerolineaList = [];
     this.rutaList = [];
@@ -78,11 +80,11 @@ export class EditComponent implements OnInit {
     this.vueloEdit.aerolinea_idAerolinea.id_aerolinea = this.editForm.controls['aerolinea'].value;
     this.vueloEdit.ruta_idRuta.idRuta = this.editForm.controls['ruta'].value;
     this.vuelosService.updateVuelo(this.vueloEdit).subscribe(resp => {
-      this.toastrService.success('Se ha editado corrextamente el vuelo', 'Proceso exitoso', { timeOut: 2000, closeButton: true});
+      this.toastrService.success(this.translate.instant("mensajes.vueloEditado"), this.translate.instant("mensajes.procesoExitoso"), { timeOut: 2000, closeButton: true});
       this.route.navigate(['/vuelos']);
     },
       error => {
-        this.toastrService.error('Ha ocurrido un error al editar el vuelo', 'Proceso fallido', { timeOut: 2000, closeButton: true});
+        this.toastrService.error(this.translate.instant("mensajes.vueloNoEditado"), this.translate.instant("mensajes.procesoFallido"), { timeOut: 2000, closeButton: true});
       });
   }
 }

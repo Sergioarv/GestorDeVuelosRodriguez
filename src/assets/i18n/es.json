@@ -1,0 +1,75 @@
+{
+    "nav": {
+        "es": "Español",
+        "en": "Inglés",
+        "Inicio": "Inicio"
+    },
+    "Rutas": "Rutas",
+    "ruta": "Ruta",
+    "Vuelos": "Vuelos",
+    "vuelo": "Vuelo",
+    "listas": {
+        "rutas": {
+            "nombre": "Lista de rutas",
+            "id": "Id",
+            "origen": "Origen",
+            "destino": "Destino"
+        },
+        "vuelos": {
+            "nombre": "Lista de vuelos",
+            "id": "Id",
+            "fechaVuelo": "Fecha del Vuelo",
+            "aerolinea": "Aerolínea",
+            "ruta": "Ruta (Origen - Destino)",
+            "operaciones": "Operaciones"
+        }
+    },
+    "mensajes": {
+        "rutas": {
+            "sinListar": "No hay rutas a listar",
+            "obtenerRutas": {
+                "advertencia": "Si selecciona una ruta, se listan los vuelos relacionados"
+            }
+        },
+        "vuelos": {
+            "sinListar": "No hay vuelos a listar"
+        },
+        "procesoExitoso":"Proceso exitoso",
+        "procesoFallido":"Proceso fallido",
+        "sinConector": "Por favor seleccione un conector",
+        "sinFechaRuta": "Por favor seleccione una fecha y una ruta",
+        "sinParametros": "Por favor seleccione un parámetro de búsqueda",
+        "tresParametros": "Por favor seleccione los 3 parametros de busqueda o quite el conector",
+        "vueloEliminado": "Se ha eliminado correctamente el vuelo",
+        "vueloNoEliminado": "Ha ocurrido un error al eliminar el vuelo",
+        "vueloCreado":"Se ha creado exitosamente el vuelo",
+        "vueloNoCreado":"Ha ocurrido un error al crear el vuelo",
+        "vueloEditado": "Se ha editado correctamente el vuelo",
+        "vueloNoEditado": "Ha ocurrido un error al editar el vuelo"
+    },
+    "busquedaAvanzada": {
+        "nombre": "Búsqueda avanzada",
+        "Fecha": "Fecha",
+        "Conector": "Conector",
+        "y": "Y",
+        "o": "O"
+    },
+    "comboBox": {
+        "seleccione": "Seleccione",
+        "seleccioneUna": "Seleccione una",
+        "de": "De",
+        "a": "a"
+    },
+    "botones": {
+        "buscar": "Buscar",
+        "limpiar": "Limpiar",
+        "crear": "Crear",
+        "editar": "Editar",
+        "eliminar": "Eliminar",
+        "guardar": "Guardar",
+        "cambios": "Guardar Cambios",
+        "cancelar": "Cancelar"
+    },
+    "crearVuelo": "Crear vuelo",
+    "editarVuelo": "Editar Vuelo"
+}

@@ -7,6 +7,7 @@ import { Vuelo } from 'src/app/model/vuelo';
 import { RutasService } from 'src/app/service/rutas.service';
 import { VuelosService } from 'src/app/service/vuelos.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class VuelosComponent implements OnInit {
     private rutaService: RutasService,
     private route: Router,
     private dateFormat: DatePipe,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private translate: TranslateService
   ) {
     // Construtor de Vuelos
     this.vuelosList = [];
@@ -82,11 +84,11 @@ export class VuelosComponent implements OnInit {
   deleteVuelos(vuelo: any): void {
     console.log('Borrar', vuelo);
     this.vueloService.deleteVuelo(vuelo).subscribe( resp => {
-      this.toastrService.success('Se ha eliminadodo corrextamente el vuelo', 'Proceso exitoso', { timeOut: 2000, closeButton: true});
+      this.toastrService.success(this.translate.instant('mensajes.vueloEliminado'),this.translate.instant('mensajes.procesoExitoso'), { timeOut: 2000, closeButton: true});
       this.limpiar();
     },
     error => {
-      this.toastrService.error('Ha ocurrido un error al eliminar el vuelo', 'Proceso fallido', { timeOut: 2000, closeButton: true});
+      this.toastrService.error(this.translate.instant('mensajes.vueloNoEliminado'),this.translate.instant('mensajes.procesoFallido') , { timeOut: 2000, closeButton: true});
     });
   }
 
@@ -119,16 +121,16 @@ export class VuelosComponent implements OnInit {
   validarParametrosFiltro(conector: any, ruta: any, fechaValid: any): string {
     if (fechaValid && ruta !== '' && conector === '') {
       this.conectorInvalido = true;
-      return 'Por favor seleccione un conector';
+      return this.translate.instant('mensajes.sinConector');
     } else if (!fechaValid && ruta === '' && conector !== '') {
       this.conectorInvalido = true;
-      return 'Por favor seleccione una fecha y una ruta';
+      return this.translate.instant('mensajes.sinFechaRuta');
     } else if (conector === '' && !fechaValid && ruta === '') {
       this.conectorInvalido = true;
-      return 'Por favor seleccion un parametro de busqueda';
+      return this.translate.instant('mensajes.sinParametros');
     } else if ((conector !== '' && fechaValid && ruta === '') || (conector !== '' && !fechaValid && ruta !== '')) {
       this.conectorInvalido = true;
-      return 'Por favor seleccione los 3 parametros de busqueda o quite el conector';
+      return this.translate.instant('mensajes.tresParametros');
     } else {
       this.conectorInvalido = false;
       return '';

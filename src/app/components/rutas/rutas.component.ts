@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { RutasService } from 'src/app/service/rutas.service';
 import { Ruta } from '../../model/ruta';
@@ -16,14 +17,15 @@ export class RutasComponent implements OnInit {
   constructor(
     private rutaService: RutasService,
     private route: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private translate: TranslateService
   ) {
     this.rutasList = [];
    }
 
   ngOnInit(): void {
     this.getRutas();
-    this.toastrService.warning('Si selecciona una ruta, se listaran los vuelos relacionados', '', { timeOut: 2000, closeButton: true});
+    this.toastrService.warning(this.translate.instant('mensajes.rutas.obtenerRutas.advertencia'), '', { timeOut: 2000, closeButton: true});
   }
 
   selectRow(ruta: Ruta): void {

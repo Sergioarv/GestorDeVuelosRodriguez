@@ -1,14 +1,14 @@
 <div class="container" style="margin: 15px; margin-left: 10%;">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Lista de rutas</h5>
+            <h5 class="card-title">{{"listas.rutas.nombre"|translate}}</h5>
             <table class="table table-bordered table-hover">
-                <caption>Lista de rutas</caption>
+                <caption>{{"listas.rutas.nombre"|translate}}</caption>
                 <thead class="thead-col">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Origen</th>
-                        <th scope="col">Destino</th>
+                        <th scope="col">{{"listas.rutas.id"|translate}}</th>
+                        <th scope="col">{{"listas.rutas.origen"|translate}}</th>
+                        <th scope="col">{{"listas.rutas.destino"|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +19,7 @@
                     </tr>
                     <tr *ngIf="rutasList.length == 0">
                         <td colspan="5">
-                            <p style="text-align: center; font-size: x-large; color: red;">No hay vuelos a listar</p>
+                            <p style="text-align: center; font-size: x-large; color: red;">{{"mensajes.rutas.sinListar"|translate}}</p>
                         </td>
                     </tr>
                 </tbody>

@@ -1,7 +1,7 @@
 <div class="container" style="margin: 15px; margin-left: 10%">
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">Crear vuelo</h5>
+            <h5 class="card-title">{{"crearVuelo"|translate}}</h5>
         </div>
         <div class="card-body">
             <form class="form-group" [formGroup]="createForm">
@@ -11,24 +11,24 @@
                         <input type="text" class="form-control">
                     </div>
                     <div class="col-4">
-                        <label>Fecha de Vuelo:</label>
+                        <label>{{"listas.vuelos.fechaVuelo"|translate}}</label>
                         <input type="date" class="form-control" formControlName="fecha"
                             value="{{ dateNow | date: 'yyyy-MM-dd' }}" required>
                     </div>
                     <div class="col-4">
-                        <label>Aerolinea:</label>
+                        <label>{{"listas.vuelos.aerolinea"|translate}}:</label>
                         <select class="form-control" formControlName="aerolinea" required>
-                            <option selected disabled value="">Seleccione una aerolina</option>
+                            <option selected disabled value="">{{"comboBox.seleccioneUna"|translate}} {{"listas.vuelos.aerolinea"|translate}}</option>
                             <option *ngFor="let aero of aerolineaList" value="{{aero.id_aerolinea}}">
                                 {{ aero.nombreAerolinea }}</option>
                         </select>
                     </div>
                     <div class="col-4">
-                        <label>Ruta:</label>
+                        <label>{{"ruta"|translate}}:</label>
                         <select class="form-control" formControlName="ruta" required>
-                            <option selected disabled value="">Seleccione una ruta</option>
+                            <option selected disabled value="">{{"comboBox.seleccioneUna"|translate}} {{"ruta"|translate}}</option>
                             <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
-                                De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
+                                {{"comboBox.de"|translate}}: {{ ruta.origen.nombreCiudad }} {{"comboBox.a"|translate}}: {{ ruta.destino.nombreCiudad }}
                             </option>
                         </select>
                     </div>
@@ -40,9 +40,9 @@
                 <div class="col-12">
                     <button class="btn btn-success" (click)="guardar()"
                         [disabled]="createForm.invalid">
-                        Guardar</button>
+                        {{"botones.cambios"|translate}}</button>
                     &nbsp;
-                    <button class="btn btn-danger" routerLink='/vuelos'>Cancelar</button>
+                    <button class="btn btn-danger" routerLink='/vuelos'>{{"botones.cancelar"|translate}}</button>
                 </div>
             </div>
         </div>

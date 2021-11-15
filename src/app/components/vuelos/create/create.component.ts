@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Aerolinea } from 'src/app/model/aerolinea';
 import { Ruta } from 'src/app/model/ruta';
@@ -34,7 +35,8 @@ export class CreateVuelosComponent implements OnInit {
     private rutaService: RutasService,
     private dateFormat: DatePipe,
     private route: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private translate: TranslateService
   ) {
     this.aerolineaList = [];
     this.rutaList = [];
@@ -70,11 +72,11 @@ export class CreateVuelosComponent implements OnInit {
     this.newVuelo.ruta_idRuta.idRuta = this.createForm.controls['ruta'].value;
 
     this.vuelosService.saveVuelo(this.newVuelo).subscribe( resp => {
-      this.toastrService.success('Se ha creado exitosamente el vuelo', 'Proceso exitoso', { timeOut: 2000, closeButton: true});
+      this.toastrService.success(this.translate.instant("mensajes.vueloCreado"), this.translate.instant("mensajes.procesoExitoso"), { timeOut: 2000, closeButton: true});
       this.route.navigate(['/vuelos']);
     },
     error => {
-      this.toastrService.error('Ha ocurrido un error al crear el vuelo', 'Proceso fallido', { timeOut: 2000, closeButton: true});
+      this.toastrService.error(this.translate.instant("mensajes.vueloNoCreado"), this.translate.instant("mensajes.procesoFallido"), { timeOut: 2000, closeButton: true});
     });
   }
 }

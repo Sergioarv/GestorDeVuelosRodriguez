@@ -1,0 +1,74 @@
+{
+    "nav": {
+        "es": "Spanish",
+        "en": "English",
+        "Inicio": "Home"
+    },
+    "Rutas": "Routes",
+    "ruta": "Route",
+    "Vuelos": "Flights",
+    "listas": {
+        "rutas": {
+            "nombre": "Route list",
+            "id": "Id",
+            "origen": "Origin",
+            "destino": "Destiny"
+        },
+        "vuelos": {
+            "nombre": "Flight List",
+            "id": "Id",
+            "fechaVuelo": "Flight Date",
+            "aerolinea": "Airline",
+            "ruta": "Route (Origin - Destination)",
+            "operaciones": "Operations"
+        }
+    },
+    "mensajes": {
+        "rutas": {
+            "sinListar": "There are no routes to list",
+            "obtenerRutas": {
+                "advertencia": "If you select a route, the related flights are listed"
+            }
+        },
+        "vuelos": {
+            "sinListar": "There are no flights to list"
+        },
+        "procesoExitoso":"Successful process",
+        "procesoFallido":"Failed process",
+        "sinConector": "Please select a connector",
+        "sinFechaRuta": "Please select a date and a route",
+        "sinParametros": "Please select a search parameter",
+        "tresParametros": "Please select the 3 search parameters or remove the connector",
+        "vueloEliminado": "Flight has been successfully deleted",
+        "vueloNoEliminado": "An error occurred while deleting the flight",
+        "vueloCreado":"Flight has been successfully created",
+        "vueloNoCreado":"An error occurred while creating the flight",
+        "vueloEditado": "Flight has been successfully edited",
+        "vueloNoEditado": "An error occurred while editing the flight"
+    },
+    "busquedaAvanzada": {
+        "nombre": "Advanced search",
+        "Fecha": "Date",
+        "Conector": "Connector",
+        "y": "And",
+        "o": "Or"
+    },
+    "comboBox": {
+        "seleccione": "Select",
+        "seleccioneUna": "Select a",
+        "de": "From",
+        "a": "to"
+    },
+    "botones": {
+        "buscar": "Search",
+        "limpiar": "Clean",
+        "crear": "Create",
+        "editar": "Edit",
+        "eliminar": "Delete",
+        "guardar": "Save",
+        "cambios": "Save Changes",
+        "cancelar": "Cancel"
+    },
+    "crearVuelo": "Create flight",
+    "editarVuelo": "Edit Flight"
+}

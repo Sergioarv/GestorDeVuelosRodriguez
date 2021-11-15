@@ -6,14 +6,15 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { VuelosComponent } from './components/vuelos/vuelos.component';
 import { RutasComponent } from './components/rutas/rutas.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditComponent } from './components/vuelos/edit/edit.component';
 import { CreateVuelosComponent } from './components/vuelos/create/create.component';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-
+import { ToastrModule } from 'ngx-toastr';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader, TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,27 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     DatePipe,
+    TranslateService,
+    TranslatePipe
+  ],
+  exports: [
+    AppComponent
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

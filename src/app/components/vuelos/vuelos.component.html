@@ -3,29 +3,29 @@
     <!-- Form de busqueda avanzada-->
     <div class="card">
         <div class="card-header">
-            <h5>Busqueda avanzada</h5>
+            <h5>{{"busquedaAvanzada.nombre"|translate}}</h5>
         </div>
         <div class="card-body">
             <form class="form-group" [formGroup]="filterForm">
                 <div class="row">
                     <div class="col-4">
-                        <label>Fecha:</label>
+                        <label>{{"busquedaAvanzada.Fecha"|translate}}:</label>
                         <input type="date" class="form-control" formControlName="fecha" required (change)="filter()">
                     </div>
                     <div class="col-4">
-                        <label>Conector:</label>
+                        <label>{{"busquedaAvanzada.Conector"|translate}}:</label>
                         <select class="form-control" formControlName="conector" required (change)="filter()">
-                            <option selected value="">Seleccione Conector</option>
-                            <option value="AND">Y</option>
-                            <option value="OR">O</option>
+                            <option selected value="">{{"comboBox.seleccione"|translate}} {{"busquedaAvanzada.Conector"|translate}}</option>
+                            <option value="AND">{{"busquedaAvanzada.y"|translate}}</option>
+                            <option value="OR">{{"busquedaAvanzada.o"|translate}}</option>
                         </select>
                     </div>
                     <div class="col-4">
-                        <label>Ruta:</label>
+                        <label>{{"ruta"|translate}}:</label>
                         <select class="form-control" formControlName="ruta" required (change)="filter()">
-                            <option selected value="">Seleccione una ruta</option>
+                            <option selected value="">{{"comboBox.seleccioneUna"|translate}} {{"ruta"|translate}}</option>
                             <option *ngFor="let ruta of rutaList" value="{{ ruta.idRuta }}">
-                                De: {{ ruta.origen.nombreCiudad }} a: {{ ruta.destino.nombreCiudad }}
+                                {{"comboBox.de"|translate}}: {{ ruta.origen.nombreCiudad }} {{"comboBox.a"|translate}}: {{ ruta.destino.nombreCiudad }}
                             </option>
                         </select>
                     </div>
@@ -38,9 +38,9 @@
                 <br>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary" (click)="filter()">Buscar</button>
+                        <button class="btn btn-primary" (click)="filter()">{{"botones.buscar"|translate}}</button>
                         &nbsp;
-                        <button class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+                        <button class="btn btn-secondary" (click)="limpiar()">{{"botones.limpiar"|translate}}</button>
                     </div>
                 </div>
             </form>
@@ -52,24 +52,24 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-4">
-                    <h5 class="card-title">Lista de vuelos</h5>
+                    <h5 class="card-title">{{"listas.vuelos.nombre"|translate}}</h5>
                 </div>
                 <div class="col-8">
                     <button class="btn btn-primary" routerLink='/vuelos/create'
-                        style="float: right; width: 10rem;">Crear</button>
+                        style="float: right; width: 10rem;">{{"botones.crear"|translate}}</button>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover">
-                <caption>Lista de rutas</caption>
+                <caption>{{"listas.vuelos.nombre"|translate}}</caption>
                 <thead class="thead-col">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Fecha del Vuelo</th>
-                        <th scope="col">Aerolinea</th>
-                        <th scope="col">Ruta (origen - Destino)</th>
-                        <th scope="col" style="width: 250px; max-width: max-content;">Operaciones</th>
+                        <th scope="col">{{"listas.vuelos.id"|translate}}</th>
+                        <th scope="col">{{"listas.vuelos.fechaVuelo"|translate}}</th>
+                        <th scope="col">{{"listas.vuelos.aerolinea"|translate}}</th>
+                        <th scope="col">{{"listas.vuelos.ruta"|translate}}</th>
+                        <th scope="col" style="width: 250px; max-width: max-content;">{{"listas.vuelos.operaciones"|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,12 +81,12 @@
                         </td>
                         <td>
                             <button class="btn btn-edit" (click)="openEditForm(vuelo)"><em class="far fa-edit"></em>
-                                Editar</button>&nbsp; &nbsp;
-                            <button class="btn btn-danger" (click)="deleteVuelos(vuelo)"><em class="far fa-trash-alt" ></em> Eliminar</button>
+                                {{"botones.editar"|translate}}</button>&nbsp; &nbsp;
+                            <button class="btn btn-danger" (click)="deleteVuelos(vuelo)"><em class="far fa-trash-alt" ></em> {{"botones.eliminar"|translate}}</button>
                     </tr>
                     <tr *ngIf="vuelosList.length == 0">
                         <td colspan="5">
-                            <p style="text-align: center; font-size: x-large; color: red;">No hay vuelos a listar</p>
+                            <p style="text-align: center; font-size: x-large; color: red;">{{"mensajes.vuelos.sinListar"|translate}}</p>
                         </td>
                     </tr>
                 </tbody>

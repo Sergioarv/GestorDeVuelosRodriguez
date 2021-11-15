@@ -5,15 +5,24 @@
                 <a class="nav-link" [routerLink]="['/']"><em class="far fa-paper-plane"></em> &nbsp;Gestor
                     de Vuelos Rodriguez</a>
             </li>
-            <li class="nav-item" role="presentation" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                <button class="btn btn-primary" [routerLink]="['/home']">Home</button>
+            <li class="nav-item" role="presentation" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <button class="btn btn-primary" [routerLink]="['/home']">{{"nav.Inicio"|translate}}</button>
             </li> &nbsp;
-            <li class="nav-item" role="presentation" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                <button class="btn btn-primary" [routerLink]="['/rutas']">Rutas</button>
+            <li class="nav-item" role="presentation" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <button class="btn btn-primary" [routerLink]="['/rutas']">{{"Rutas"| translate }}</button>
             </li> &nbsp;
-            <li class="nav-item" role="presentation" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                <button class="btn btn-primary" [routerLink]="['/vuelos']">Vuelos</button>
+            <li class="nav-item" role="presentation" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <button class="btn btn-primary" [routerLink]="['/vuelos']">{{"Vuelos"|translate}}</button>
             </li>
         </ul>
+    </div>
+    <div style="float: right;">
+        <select class="custom-select" #langSelect (change)="changeLang(langSelect.value)" >
+            <option value="es"><span class="flag-icon flag-icon-es"></span>{{"nav.es"|translate}}</option>
+            <option value="en"><span class="flag-icon flag-icon-en"></span>{{"nav.en"|translate}}</option>
+        </select>
     </div>
 </nav>
