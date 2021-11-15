@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Aerolinea } from 'src/app/model/aerolinea';
 import { Ruta } from 'src/app/model/ruta';
 import { Vuelo } from 'src/app/model/vuelo';
@@ -32,7 +33,8 @@ export class CreateVuelosComponent implements OnInit {
     private aerolineaService: AerolineaService,
     private rutaService: RutasService,
     private dateFormat: DatePipe,
-    private route: Router
+    private route: Router,
+    private toastrService: ToastrService
   ) {
     this.aerolineaList = [];
     this.rutaList = [];
@@ -68,10 +70,11 @@ export class CreateVuelosComponent implements OnInit {
     this.newVuelo.ruta_idRuta.idRuta = this.createForm.controls['ruta'].value;
 
     this.vuelosService.saveVuelo(this.newVuelo).subscribe( resp => {
+      this.toastrService.success('Se ha creado exitosamente el vuelo', 'Proceso exitoso', { timeOut: 2000, closeButton: true});
       this.route.navigate(['/vuelos']);
     },
     error => {
-      console.log('ERROR', error);
+      this.toastrService.error('Ha ocurrido un error al crear el vuelo', 'Proceso fallido', { timeOut: 2000, closeButton: true});
     });
   }
 }

@@ -6,6 +6,7 @@ import { Ruta } from 'src/app/model/ruta';
 import { Vuelo } from 'src/app/model/vuelo';
 import { RutasService } from 'src/app/service/rutas.service';
 import { VuelosService } from 'src/app/service/vuelos.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class VuelosComponent implements OnInit {
     private vueloService: VuelosService,
     private rutaService: RutasService,
     private route: Router,
-    private dateFormat: DatePipe
+    private dateFormat: DatePipe,
+    private toastrService: ToastrService
   ) {
     // Construtor de Vuelos
     this.vuelosList = [];
@@ -80,7 +82,11 @@ export class VuelosComponent implements OnInit {
   deleteVuelos(vuelo: any): void {
     console.log('Borrar', vuelo);
     this.vueloService.deleteVuelo(vuelo).subscribe( resp => {
+      this.toastrService.success('Se ha eliminadodo corrextamente el vuelo', 'Proceso exitoso', { timeOut: 2000, closeButton: true});
       this.limpiar();
+    },
+    error => {
+      this.toastrService.error('Ha ocurrido un error al eliminar el vuelo', 'Proceso fallido', { timeOut: 2000, closeButton: true});
     });
   }
 
@@ -95,6 +101,8 @@ export class VuelosComponent implements OnInit {
       this.vueloService.filterVuelos(fecha ? fecha : null, ruta ? ruta : null, conector ? conector : null).subscribe(resp => {
         this.vuelosList = resp;
       });
+    }else{
+      this.toastrService.warning(this.mensaje, '', { timeOut: 2000, closeButton: true});
     }
   }
 

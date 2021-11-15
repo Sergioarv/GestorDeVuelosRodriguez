@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditComponent } from './components/vuelos/edit/edit.component';
 import { CreateVuelosComponent } from './components/vuelos/create/create.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -30,9 +31,10 @@ import { CreateVuelosComponent } from './components/vuelos/create/create.compone
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
