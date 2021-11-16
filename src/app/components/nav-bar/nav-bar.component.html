@@ -20,9 +20,10 @@
         </ul>
     </div>
     <div style="float: right;">
-        <select class="custom-select" #langSelect (change)="changeLang(langSelect.value)" >
-            <option value="es"><span class="flag-icon flag-icon-es"></span>{{"nav.es"|translate}}</option>
-            <option value="en"><span class="flag-icon flag-icon-en"></span>{{"nav.en"|translate}}</option>
+        <select class="form-control" name="langSelect" id="langSelect" #langSelect
+            (change)="changeLang(langSelect.value)" style="width: fit-content;">
+            <option value="es"><em class="far fa-edit"></em>{{"nav.es"|translate}}</option>
+            <option value="en">{{"nav.en"|translate}}</option>
         </select>
     </div>
 </nav>
